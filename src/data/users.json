@@ -64,5 +64,17 @@
     "name": "Bashar",
     "email": "basharto20@gmail.com",
     "password": "BB2000"
+  },
+  {
+    "id": 12,
+    "name": "Bashar Tomeza",
+    "email": "basharto20@gmail.com",
+    "password": "bb1234"
+  },
+  {
+    "id": 13,
+    "name": "bbbb",
+    "email": "mazentom311@gmail.com",
+    "password": "gg1234"
   }
 ]

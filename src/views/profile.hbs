@@ -1,0 +1,50 @@
+<!-- src/views/profile.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>User Profile</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6f9;
+      padding: 40px;
+      color: #333;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h1 { color: #2c3e50; text-align: center; }
+    .info { margin: 15px 0; }
+    .label { font-weight: bold; color: #555; }
+    .value { color: #1a73e8; margin-left: 8px; }
+    .back { display: block; margin-top: 20px; text-align: center; color: #1a73e8; text-decoration: none; }
+    .back:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>👤 User Profile</h1>
+
+    <div class="info">
+      <span class="label">ID:</span>
+      <span class="value">{{user.id}}</span>
+    </div>
+    <div class="info">
+      <span class="label">Name:</span>
+      <span class="value">{{user.name}}</span>
+    </div>
+    <div class="info">
+      <span class="label">Email:</span>
+      <span class="value">{{user.email}}</span>
+    </div>
+
+    <a href="/users" class="back">← All Users</a>
+  </div>
+</body>
+</html>
