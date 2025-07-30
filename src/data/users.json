@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "name": "Alice Smith",
+    "email": "alice@example.com",
+    "password": "password123"
+  },
+  {
+    "id": 2,
+    "name": "Bob Johnson",
+    "email": "bob@example.com",
+    "password": "securepass456"
+  },
+  {
+    "id": 3,
+    "name": "Charlie Davis",
+    "email": "charlie@example.com",
+    "password": "charlie789"
+  },
+  {
+    "id": 4,
+    "name": "Dana Lee",
+    "email": "dana@example.com",
+    "password": "danaPass"
+  },
+  {
+    "id": 5,
+    "name": "Evan Walker",
+    "email": "evan@example.com",
+    "password": "evanSecure1"
+  },
+  {
+    "id": 6,
+    "name": "Fiona Adams",
+    "email": "fiona@example.com",
+    "password": "fiona888"
+  },
+  {
+    "id": 7,
+    "name": "George Harris",
+    "email": "george@example.com",
+    "password": "george123"
+  },
+  {
+    "id": 8,
+    "name": "Hannah Brown",
+    "email": "hannah@example.com",
+    "password": "hannahpass"
+  },
+  {
+    "id": 9,
+    "name": "Ian Thompson",
+    "email": "ian@example.com",
+    "password": "ian2025"
+  },
+  {
+    "id": 10,
+    "name": "Jenny Wilson",
+    "email": "jenny@example.com",
+    "password": "jennyStrong"
+  },
+  {
+    "id": 11,
+    "name": "Bashar",
+    "email": "basharto20@gmail.com",
+    "password": "BB2000"
+  }
+]
