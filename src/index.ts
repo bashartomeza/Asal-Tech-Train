@@ -2,19 +2,21 @@ import express from 'express';
 import path from 'path';
 import userRouter from './route/userRouter';
 import authRouter from './route/authRouter';
+import mongoose from 'mongoose';  
+
+mongoose.connect('mongodb://localhost:27017/frt', {});
 
 const app = express();
 const PORT = 3000;
 
-// View engine setup
+
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
-// ⬇️ Important: Parse form data (required for login/register)
-app.use(express.urlencoded({ extended: true })); // <-- FIX
-app.use(express.json()); // Keep this for JSON APIs
+app.use(express.urlencoded({ extended: true })); 
+app.use(express.json()); 
 
-// Routes
+
 app.use('/users', userRouter);
 app.use('/auth', authRouter);
 

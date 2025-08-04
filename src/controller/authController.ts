@@ -1,67 +1,79 @@
 import { Request, Response } from 'express';
-import {AuthService} from '../services/authService';
+import { AuthService } from '../services/authService';
+import {  User } from '../models/User.model';
 
 const authService = new AuthService();
+
 export class AuthController {
-  showLoginPage(req: Request, res: Response) {
-    res.render('login');
+
+  async login(req: Request, res: Response): Promise<void> {
+    try {
+      const { email, password } = req.body;
+      const user = await authService.login(email, password);
+      if (user) {
+        console.log('User logged in:', user);
+        res.status(200).render('profile', { user });
+      } else {
+        res.status(401).render('login', { error: 'Invalid email or password' });
+      }
+    } catch (error) {
+      res.status(500).render('login', { error: 'Internal server error' });
+    }
+  }
+  async register(req: Request, res: Response): Promise<void> {
+    try {
+      const user = await authService.register(req.body as User);  
+      res.status(201).render('profile', { user });
+    } catch (error) {
+      res.status(500).render('error', { message: 'Internal server error' });
+    }
   }
 
-  showRegisterPage(req: Request, res: Response) {
-    res.render('register');
+  async logout(req: Request, res: Response): Promise<void> {  
+    try {
+      res.status(200).render('login');
+    } catch (error) {
+      res.status(500).render('error', { message: 'Internal server error' });
+    }
   }
 
-  login(req: Request, res: Response) {
-    const { email, password } = req.body;
-    const user = authService.Login(email, password);
-    if (user) {
-    // ✅ Redirect to /profile/11 (e.g.)
-    res.redirect(`/auth/profile/${user.id}`);
-  } else {
-    res.render('login', { error: 'Invalid email or password' });
+  async showProfilePage(req: Request, res: Response): Promise<void> {
+    try {
+      const user = req.body.user; // Assuming user is set in session middleware
+      if (user) {
+        res.status(200).render('profile', { user });
+      } else {
+        res.status(401).render('login', { error: 'Please log in to view your profile' });
+      }
+    } catch (error) {
+      res.status(500).render('error', { message: 'Internal server error' });
+    }
+  }
+
+ async showLoginPage(req: Request, res: Response): Promise<void> {
+    try {
+      res.status(200).render('login');
+    } catch (error) {
+      res.status(500).render('error', { message: 'Internal server error' });
+    }
+  }
+
+  async showRegisterPage(req: Request, res: Response): Promise<void> {
+      res.status(200).render('register');
+      res.status(500).render('error', { message: 'Internal server error' });
+  } 
+  async showProfile(req: Request, res: Response): Promise<void> {  
+    try {
+      const userId = req.params.id;
+      const user = await authService.getUserById(userId);
+      if (user) {
+        res.status(200).render('profile', { user });
+      } else {
+        res.status(404).render('error', { message: 'User not found' });
+      }
+    } catch (error) {
+      res.status(500).render('error', { message: 'Internal server error' });
+    }
   }
 }
 
-showProfile(req: Request, res: Response) {
-  const id = parseInt(req.params.id);
-
-  if (isNaN(id)) {
-    return res.redirect('/auth/login');
-  }
-
-  const user = authService.getUserById(id);
-
-  if (user) {
-    res.render('profile', { user });
-  } else {
-    res.redirect('/auth/login');
-  }
-}
-  showProfileById(req: Request, res: Response) {
-  const userId = parseInt(req.params.id);
-  const users = authService.readData();
-  if (isNaN(userId)) {
-  const user = users.find(u => u.id === userId);
-
-  if (user) {
-    res.render('profile', { user });
-  } else {
-    res.redirect('/auth/login');
-  }
-}
-
-  }
-  
-  register(req: Request, res: Response) {
-    const { name, email, password } = req.body;
-    const users = authService.readData();
-    const newUser = {
-      id: users.length + 1,
-      name,
-      email,
-      password
-    };
-    authService.register(newUser);
-    res.redirect('/auth/login');
-  }
-}

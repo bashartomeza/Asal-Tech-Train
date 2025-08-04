@@ -76,5 +76,24 @@
     "name": "bbbb",
     "email": "mazentom311@gmail.com",
     "password": "gg1234"
+  },
+  null,
+  {
+    "name": "j",
+    "email": "john@example.com",
+    "password": "secret123"
+  },
+  null,
+  {
+    "id": 17,
+    "name": "sss",
+    "email": "ss@gmail.com",
+    "password": "s"
+  },
+  {
+    "id": 18,
+    "name": "Bashar Tomeza",
+    "email": "dana@example.com",
+    "password": "123456"
   }
 ]

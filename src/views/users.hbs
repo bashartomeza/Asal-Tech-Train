@@ -52,29 +52,32 @@
   </style>
 </head>
 <body>
-  <h1>All Registered Users</h1>
-
-  {{#if users.length}}
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Email</th>
-        </tr>
-      </thead>
-      <tbody>
+  <h1>All Users</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#if users.length}}
         {{#each users}}
           <tr>
-            <td>{{id}}</td>
-            <td>{{name}}</td>
-            <td>{{email}}</td>
+            <td>{{this.id}}</td>
+            <td>{{this.name}}</td>
+            <td>{{this.email}}</td>
+            <td><a href="/auth/profile/{{this.id}}">View Profile</a></td>
           </tr>
         {{/each}}
-      </tbody>
-    </table>
-  {{else}}
-    <p class="empty">No users found. Please register some users first.</p>
-  {{/if}}
+      {{else}}
+        <tr>
+          <td colspan="4" class="empty">No users found.</td>
+        </tr>
+      {{/if}}
+    </tbody>
+  </table>
 </body>
 </html>
